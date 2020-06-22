@@ -26,7 +26,7 @@ export default function App() {
     if (repositoryIndex >= 0) {
       const repository = repositories[repositoryIndex]
       repository.likes++
-      await api.put(`repositories/${id}`, repository)
+      await api.post(`repositories/${id}/like`, repository)
       repositories[repositoryIndex] = 
       setRepositories([...repositories])
     }
@@ -60,7 +60,7 @@ export default function App() {
                   style={styles.likeText}
                   testID={`repository-likes-${repository.id}`}
                 >
-                  {repository.likes} curtidas
+                  {repository.likes} {repository.likes===1? 'curtida' : 'curtidas'}
                 </Text>
               </View>
 
